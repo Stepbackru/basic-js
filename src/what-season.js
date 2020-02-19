@@ -2,7 +2,7 @@ module.exports = function getSeason(date) {
   if(date){
     let trDate = new Date(1000, 0, 0, 0, 1, 2, 3);
     if (date.getMonth !== trDate.getMonth) {
-      throw Error
+      throw new Error();
     };
     const month = date.getMonth() + 1;
     if (month === 12 || month === 1 || month === 2) {
