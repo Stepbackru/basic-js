@@ -5,11 +5,15 @@ module.exports = function transform(arr) {
             if(arr[i] === '--discard-next'){
                 i++;
             } else if(arr[i] === '--discard-prev'){
-                newArr.pop();
+                if (newArr.length !== 0 && arr[i - 2] !== '--discard-next'){
+                    newArr.pop();
+                }
             } else if(arr[i] === '--double-next'){
                 newArr.push(arr[i + 1]);
             } else if(arr[i] === '--double-prev'){
-                newArr.push(arr[i - 1]);
+                if (i !== 0 && arr[i - 2] !== '--discard-next') {
+                    newArr.push(arr[i - 1]);
+                }
             } else {
                 newArr.push(arr[i]);
             }
